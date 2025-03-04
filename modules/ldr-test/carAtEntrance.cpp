@@ -13,8 +13,7 @@ UnbufferedSerial uartUsb(USBTX, USBRX);
 AnalogIn lightsens(A0);
 
 void carAtEntranceInit()
-{
-    // Set baud rate for UART
+{ // Set baud rate for UART
     uartUsb.baud(115200);
     
     // Initialize light readings array to zero
@@ -25,10 +24,9 @@ void carAtEntranceInit()
     // Send initialization message
     uartUsb.write("Car Detection System Initialized\r\n", 36);
 }
-
 bool sensorUpdate() 
 {
-    // Add new reading to array
+   // Add new reading to array
     lightReadingsArray[lightSampleIndex] = lightsens.read();
     lightSampleIndex++;
     
@@ -44,7 +42,7 @@ bool sensorUpdate()
     }
     
     // Scale to 0-100 (higher number means darker)
-    float currentLightLevel = (1.0 - (lightReadingsSum / LIGHT_SENSOR_SAMPLES)) * 100;
+    float currentLightLevel = (1.0 - (lightReadingsSum / LIGHT_SENSOR_SAMPLES)) * 10000.0;
     
     // Debug: Print the current light level
     char buffer[50];

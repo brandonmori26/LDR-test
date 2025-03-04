@@ -8,7 +8,7 @@ int main()
     while (true) {
         carAtEntranceUpdate();
         
-        delay(100);
+        delay(500);
 
     }
 }
